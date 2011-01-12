@@ -1,0 +1,7 @@
+Host kk
+  HostName kernkraft.imn.htwk-leipzig.de
+  User     fpilz1
+  
+Host kain
+  HostName kain.imn.htwk-leipzig.de
+  User     fpilz1

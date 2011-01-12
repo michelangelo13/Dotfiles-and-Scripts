@@ -1,0 +1,23 @@
+alias reload='source ~/.profile'
+alias c='script/console'
+alias s='script/server'
+alias ls='ls -AGF'
+alias list='ls -AGFohS'
+alias newalias='mate -w ~/config/dotfiles/bash/aliases && reload'
+alias newenv='mate -w ~/config/dotfiles/bash/env && reload'
+alias newconfig='mate -w ~/config/dotfiles/bash/config && reload'
+alias hgc='hg commit -m '
+alias gith="git add . && git commit -m 'commit' && git push heroku master"
+alias migrate='rake db:migrate && rake db:migrate RAILS_ENV=test'
+alias gitk='gitk --all'
+alias gst='git status'
+alias gits='git status'
+alias bachelor='cd ~/Desktop/Dropbox/Own\ Data/6.\ Semester/Bachelor\ Thesis/R\ Scripts'
+alias yarsdir='cd ~/work/yars/branches/yars-refactoring/'
+alias thesis='pdflatex ~/Desktop/Dropbox/Own\ Data/6.\ Semester/Bachelor\ Thesis/Latex/thesis'
+alias prolog='swipl'
+
+function gitc() {
+  git add -A
+  git commit -m "$*" # all arguments are applied here, $1 would apply first argument etc.
+}

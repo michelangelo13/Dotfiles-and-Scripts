@@ -15,7 +15,7 @@ end
 
 def svn_info
   status = `svn status 2>&1`
-  if status.include?("not a working copy")
+  if status.include?("not a working copy") or status.include?("command not found")
     ""
   elsif status.empty?
     "[svn]"

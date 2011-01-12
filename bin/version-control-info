@@ -10,13 +10,30 @@
 require 'time'
 
 def main # will be called at the end, imho improves readability
+  print git_info() << svn_info()
+end
+
+def svn_info
+  status = `svn status 2>&1`
+  if status.include?("not a working copy")
+    ""
+  elsif status.empty?
+    "[svn]"
+  else
+    time = Time.parse(`svn info`.split("\n").last.sub("Last Changed Date: ", ""))
+    elapsed_time, suffix = seconds_to_appropriate_magnitude(Time.now - time)
+    "[svn, " << elapsed_time.to_s << suffix << "] "
+  end
+end
+
+def git_info
   branch = git_branch()
   unless branch.empty?
     elapsed_time = git_commit_time()
     separator = elapsed_time.empty? ? "" : ", "
-    print "[" << branch.to_s << separator << elapsed_time << "] "
+    "[" << branch.to_s << separator << elapsed_time << "] "
   else
-    print ""
+    ""
   end
 end
 

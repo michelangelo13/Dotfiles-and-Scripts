@@ -9,13 +9,32 @@
 
 require 'time'
 
+def seconds_to_appropriate_magnitude(seconds)
+  time = seconds / 60.0
+  suffix = "m"
+  if time > 60
+    time = time / 60
+    suffix = "h"
+    
+    if time > 24
+      time = time / 24
+      suffix = "d"
+      
+      if time > 365
+        time = time / 365
+        suffix = "y"
+      end
+    end
+  end
+  
+  [time.to_i, suffix]
+end
+
 git_output = `git status 2>&1`
 if git_output.include?("nothing to commit") or git_output.include?("Not a git repository") or `git log 2>&1`.include?("fatal")
   print ""
 else
   git_last_commit_date = `git log | head -n 3`.split("\n").grep(/^Date:.*$/).first.sub("Date:", "").strip
-  elapsed_time = ((Time.now - Time.parse(git_last_commit_date))/60.0).to_i # elapsed time in minutes
-
-  # print time in green, yellow or red, depending on how much time elapsed
-  print elapsed_time.to_s << "min"
+  elapsed_time, suffix = seconds_to_appropriate_magnitude(Time.now - Time.parse(git_last_commit_date))
+  print elapsed_time.to_s << suffix
 end

@@ -9,77 +9,79 @@
 
 require 'time'
 
-def main # will be called at the end, imho improves readability
-  print git_info() << svn_info()
-end
-
-def svn_info
-  status = `svn status 2>&1`
-  if status.include?("not a working copy") or status.include?("command not found")
-    ""
-  elsif status.empty?
-    "[svn]"
-  else
-    time = Time.parse(`svn info`.split("\n").last.sub("Last Changed Date: ", ""))
-    elapsed_time, suffix = seconds_to_appropriate_magnitude(Time.now - time)
-    "[svn, " << elapsed_time.to_s << suffix << "] "
+module VersionControlInfo
+  def self.main # will be called at the end, imho improves readability
+    print git_info() << svn_info()
   end
-end
 
-def git_info
-  branch = git_branch()
-  unless branch.empty?
-    elapsed_time = git_commit_time()
-    separator = elapsed_time.empty? ? "" : ", "
-    "[" << branch.to_s << separator << elapsed_time << "] "
-  else
-    ""
-  end
-end
-
-def git_branch
-  git_output = `git branch 2>&1`
-  if git_output.include?("Not a git repository") or git_output.include?("command not found")
-    ""
-  elsif git_output.empty? # no branch yet (before initial commit)
-    "git"
-  else # git repo with branch
-    git_branches = git_output.split("\n").collect!{ |line| line.strip}
-    git_current_branch = git_branches.grep(/^\*.*$/).first
-    "git:" << git_current_branch[2..git_current_branch.length] # remove asterisk and return branch name
-  end
-end
-
-def git_commit_time
-  git_output = `git status 2>&1`
-  if git_output.include?("nothing to commit") or `git log 2>&1`.include?("fatal")
-    ""
-  else
-    git_last_commit_date = `git log | head -n 3`.split("\n").grep(/^Date:.*$/).first.sub("Date:", "").strip
-    elapsed_time, suffix = seconds_to_appropriate_magnitude(Time.now - Time.parse(git_last_commit_date))
-    elapsed_time.to_s << suffix
-  end
-end
-
-def seconds_to_appropriate_magnitude(seconds)
-  time = seconds / 60.0
-  suffix = "m"
-  if time > 60
-    time = time / 60
-    suffix = "h"
-
-    if time > 24
-      time = time / 24
-      suffix = "d"
-
-      if time > 365
-        time = time / 365
-        suffix = "y"
-      end
+  def self.svn_info
+    status = `svn status 2>&1`
+    if status.include?("not a working copy") or status.include?("command not found")
+      ""
+    elsif status.empty?
+      "[svn]"
+    else
+      time = Time.parse(`svn info`.split("\n").last.sub("Last Changed Date: ", ""))
+      elapsed_time, suffix = seconds_to_appropriate_magnitude(Time.now - time)
+      "[svn, " << elapsed_time.to_s << suffix << "] "
     end
   end
 
-  [time.to_i, suffix]
+  def self.git_info
+    branch = git_branch()
+    unless branch.empty?
+      elapsed_time = git_commit_time()
+      separator = elapsed_time.empty? ? "" : ", "
+      "[" << branch.to_s << separator << elapsed_time << "] "
+    else
+      ""
+    end
+  end
+
+  def self.git_branch
+    git_output = `git branch 2>&1`
+    if git_output.include?("Not a git repository") or git_output.include?("command not found")
+      ""
+    elsif git_output.empty? # no branch yet (before initial commit)
+      "git"
+    else # git repo with branch
+      git_branches = git_output.split("\n").collect!{ |line| line.strip}
+      git_current_branch = git_branches.grep(/^\*.*$/).first
+      "git:" << git_current_branch[2..git_current_branch.length] # remove asterisk and return branch name
+    end
+  end
+
+  def self.git_commit_time
+    git_output = `git status 2>&1`
+    if git_output.include?("nothing to commit") or `git log 2>&1`.include?("fatal")
+      ""
+    else
+      git_last_commit_date = `git log | head -n 3`.split("\n").grep(/^Date:.*$/).first.sub("Date:", "").strip
+      elapsed_time, suffix = seconds_to_appropriate_magnitude(Time.now - Time.parse(git_last_commit_date))
+      elapsed_time.to_s << suffix
+    end
+  end
+
+  def self.seconds_to_appropriate_magnitude(seconds)
+    time = seconds / 60.0
+    suffix = "m"
+    if time > 60
+      time = time / 60
+      suffix = "h"
+
+      if time > 24
+        time = time / 24
+        suffix = "d"
+
+        if time > 365
+          time = time / 365
+          suffix = "y"
+        end
+      end
+    end
+
+    [time.to_i, suffix]
+  end
 end
 
-main
+VersionControlInfo::main

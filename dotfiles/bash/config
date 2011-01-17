@@ -3,4 +3,4 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then source "$HOME/.rvm/scripts/rvm" ; fi
 # Finished adapting your PATH environment variable for use with MacPorts.
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
-PS1="\[$CYAN\]\w@\h \$(version-control-info)➜\[$NO_COLOR\] "
+PS1="\[$CYAN\]\w@\h \$(version-control-info)\n➜\[$NO_COLOR\] "

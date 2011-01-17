@@ -25,3 +25,22 @@ function gitc() {
   # git add -A
   git commit -m "$*" # all arguments are applied here, $1 would apply first argument etc.
 }
+
+function simson-copy() {
+  scp $1 kain:$1
+  ssh kain "scp $1 simson10:$1"
+  ssh kain "rm $1"
+}
+
+# this script prints the last 10 commands and
+# how often they were used to indicate candidates for aliases
+function commandcounter() {
+  history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+}
+
+function svn-authors() {
+  authors=$(svn log -q | grep -e '^r' | awk 'BEGIN { FS = "|" } ; { print $2 }' | sort | uniq)
+  for author in ${authors}; do
+    echo "${author} = NAME <USER@DOMAIN>";
+  done
+}

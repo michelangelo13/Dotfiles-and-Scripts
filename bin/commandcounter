@@ -1,2 +1,3 @@
+#!/usr/bin/env bash
 # this script prints the last 10 commands and how often they were used to indicate candidates for aliases
 history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head

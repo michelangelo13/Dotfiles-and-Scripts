@@ -32,6 +32,10 @@ function simson-copy() {
   ssh kain "rm $1"
 }
 
+function simson-node-chooser() {
+  ssh kain "echo 'ssh simson$1 && logout' > .login"
+}
+
 # this script prints the last 10 commands and
 # how often they were used to indicate candidates for aliases
 function commandcounter() {

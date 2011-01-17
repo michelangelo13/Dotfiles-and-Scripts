@@ -1,0 +1,19 @@
+#!/usr/bin/env perl
+#
+# Description: Perl-Wrapper for missing dnsdomainname under some OS
+#####################################################################
+
+use Sys::Hostname;
+
+$hostname = hostname;
+$ipaddr = join ('.', unpack ("C4", (gethostbyname ($hostname))[4]));
+
+open(QUERY, "nslookup $ipaddr |");
+while (<QUERY>) {
+  if (/(Name:|name =)\s*(.*)\s*/) {
+    $domainname = $2; # get fqdn
+    $domainname =~ s/^.*?[.]//; # strip hostname and first dot
+    $domainname =~ s/\.$//; # strip trailing dot
+    print "$domainname\n";
+  }
+}

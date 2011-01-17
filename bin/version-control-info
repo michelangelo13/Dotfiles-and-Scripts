@@ -82,6 +82,13 @@ module VersionControlInfo
 
     [time.to_i, suffix]
   end
+  
+  # for example
+  # puts color_code_for("RED")
+  # will change the color of the text-output to red
+  def self.color_code_for(color_name)
+    eval "\"#{ENV[color_name]}\""
+  end
 end
 
 VersionControlInfo::main

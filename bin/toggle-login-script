@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+login_script = ""
+
+File.open("#{ENV['HOME']}/.login", "r") do |file|
+  login_script = file.read
+end
+
+if login_script.grep(/#/).empty?
+  login_script = "# " + login_script
+else
+  login_script = login_script.sub("#", "")
+end
+
+File.open("#{ENV['HOME']}/.login", "w") do |file|
+  file.write login_script
+end

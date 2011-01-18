@@ -40,7 +40,7 @@ module VersionControlInfo
 
   def self.git_branch
     git_output = `git branch 2>&1`
-    if git_output.include?("Not a git repository") or git_output.include?("command not found")
+    if git_output.include?("fatal") or git_output.include?("command not found")
       ""
     elsif git_output.empty? # no branch yet (before initial commit)
       "git"

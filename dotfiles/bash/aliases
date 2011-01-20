@@ -28,7 +28,7 @@ function gitc() {
 
 function simson-copy() {
   scp $1 kain:$1
-  ssh kain "scp $1 simson10:$1"
+  ssh kain "scp $1 simson10:$2$1"
   ssh kain "rm $1"
 }
 

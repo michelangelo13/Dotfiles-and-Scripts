@@ -6,7 +6,7 @@ File.open("#{ENV['HOME']}/.login", "r") do |file|
 end
 
 if login_script.grep(/#/).empty?
-  login_script = "# " + login_script
+  login_script = "#" + login_script
 else
   login_script = login_script.sub("#", "")
 end

@@ -26,9 +26,15 @@ function gitc() {
   git commit -m "$*" # all arguments are applied here, $1 would apply first argument etc.
 }
 
-function simson-copy() {
+function simson-paste() {
   scp $1 kain:$1
   ssh kain "scp $1 simson10:$2$1"
+  ssh kain "rm $1"
+}
+
+function simson-copy() {
+  ssh kain "scp simson10:$2$1 $1"
+  scp kain:$1 $1
   ssh kain "rm $1"
 }
 
@@ -40,6 +46,10 @@ function simson-node-chooser() {
 # how often they were used to indicate candidates for aliases
 function commandcounter() {
   history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+}
+
+function commandcounter-detailed() {
+  history | awk '{a[$2 $3]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 }
 
 function svn-authors() {

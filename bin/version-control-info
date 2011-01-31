@@ -16,7 +16,7 @@ module VersionControlInfo
 
   def self.svn_info
     status = `svn status 2>&1`
-    if status.include?("not a working copy") or status.include?("command not found")
+    if status.include?("not a working copy") or status.include?("keine Arbeitskopie") or status.include?("command not found")
       ""
     elsif status.empty?
       "[svn]"

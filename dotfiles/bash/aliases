@@ -18,6 +18,7 @@ alias gitk='gitk --all'
 alias gst='git status'
 alias gits='git status'
 alias gita='git add -A'
+alias gitd='git diff'
 
 alias prolog='swipl'
 

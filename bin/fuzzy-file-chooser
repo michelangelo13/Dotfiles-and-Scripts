@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# chooses between files which reside in "base"
+# best match is chosen via a regular expression, which only checks that given characters appear in that order
+
+module FileChooser
+  def self.choose_file(base, target)
+    searchstring = "^.*" << target.chars.map{|x| x}.join(".*") << ".*$"
+    files = `ls #{base} | grep #{searchstring}`
+    puts base + "/" + files.first
+  end
+end
+
+FileChooser::choose_file(ARGV[0], ARGV[1])

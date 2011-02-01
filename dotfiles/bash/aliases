@@ -1,12 +1,12 @@
 alias reload='source ~/.profile 2> /dev/null ; source ~/.bashrc 2> /dev/null'
-alias newalias='mate -w ~/config/dotfiles/bash/aliases && reload'
-alias newenv='mate -w ~/config/dotfiles/bash/env && reload'
-alias newconfig='mate -w ~/config/dotfiles/bash/config && reload'
+alias nalias="$EDITOR ~/config/dotfiles/bash/aliases && reload"
+alias nenv="$EDITOR ~/config/dotfiles/bash/env && reload"
+alias nconfig="$EDITOR ~/config/dotfiles/bash/config && reload"
 
 alias ls='ls -AGF'
 alias list='ls -AGFohS'
 
-#  ruby
+# ruby
 alias c='script/rails console'
 alias s='script/rails server'
 alias migrate='rake db:migrate && rake db:migrate RAILS_ENV=test'
@@ -15,12 +15,19 @@ alias hgc='hg commit -m '
 
 # git
 alias gitk='gitk --all'
-alias gst='git status'
 alias gits='git status'
 alias gita='git add -A'
 alias gitd='git diff'
 
 alias prolog='swipl'
+
+function work() {
+  cd `fuzzy-file-chooser ~/work $1`
+}
+
+# htwk
+alias kk='ssh kk'
+alias kain='ssh kain'
 
 function gitc() {
   # git add -A
@@ -50,7 +57,7 @@ function commandcounter() {
 }
 
 function commandcounter-detailed() {
-  history | awk '{a[$2 $3]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+  history | awk '{a[$2 $3]++}END{for(i in a){print a[i] " " i}}' | sort -n
 }
 
 function svn-authors() {

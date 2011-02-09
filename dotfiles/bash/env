@@ -5,11 +5,9 @@ export JRUBY_HOME=~/jruby
 export AUTOFEATURE=true
 # export R_HOME=/Library/Frameworks/R.framework/Resources
 
-export PATH=~/.gem/ruby/1.8/bin:$PATH
 export PATH=/Applications/Emacs.app/Contents/MacOS:$PATH
 # export PATH=/Applications/MAMP/Library/bin:$PATH
 export PATH=/usr/local/mysql/bin:$PATH
-export PATH=$PATH:~/jruby/bin
 export PATH=$PATH:$HOME/.cabal/bin
 export PATH=$PATH:$SCALA_HOME/bin
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH

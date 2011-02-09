@@ -1,6 +1,7 @@
 a) mv testfile.{a,b} will rename testfile.a to testfile.b (the list expression can be used in between)
 b) pbcopy and pbpast can be used to copy & paste from clipboard (works with pipes)
 c) echo -e um escape characters zu interpretieren, beispielsweise für echo -e "$CYAN test"
+d) HighLine ist ein RubyGem um einfach Konsolen-Interfaces zu basteln (Fragen mit default-Antworten, Menüs usw)
 
 Bash allows these prompt strings to be customized by inserting a
 number of backslash-escaped special characters that are

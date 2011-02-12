@@ -6,7 +6,7 @@ module FileChooser
   def self.choose_file(base, target)
     searchstring = "^.*" << target.chars.map{|x| x}.join(".*") << ".*$"
     files = `ls #{base} | grep #{searchstring}`
-    puts base + "/" + files.first
+    puts base + "/" + files.split("\n").first
   end
 end
 

@@ -3,6 +3,7 @@ b) pbcopy and pbpast can be used to copy & paste from clipboard (works with pipe
 c) echo -e um escape characters zu interpretieren, beispielsweise für echo -e "$CYAN test"
 d) HighLine ist ein RubyGem um einfach Konsolen-Interfaces zu basteln (Fragen mit default-Antworten, Menüs usw)
 e) Commander und Thor sind Tools wie Rake; Commander nutzt OptionParser und HighLine
+f) The environment variable CDPATH contains all pathes cd is looking for your targeted directory
 
 Bash allows these prompt strings to be customized by inserting a
 number of backslash-escaped special characters that are

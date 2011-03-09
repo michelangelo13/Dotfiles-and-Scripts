@@ -12,5 +12,6 @@ export PATH=$PATH:$HOME/.cabal/bin
 export PATH=$PATH:$SCALA_HOME/bin
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=$PATH:~/bin
+export PATH=$PATH:/Library/PostgreSQL/9.0/bin
 
 CDPATH=.:~:~/work:~/Downloads:~/Desktop/Dropbox/Own\ Data/7.\ Semester

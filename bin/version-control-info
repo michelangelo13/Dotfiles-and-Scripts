@@ -47,6 +47,7 @@ module VersionControlInfo
     else # git repo with branch
       git_branches = git_output.split("\n").collect!{ |line| line.strip}
       git_current_branch = git_branches.grep(/^\*.*$/).first
+      return "git" if git_current_branch.nil? # no branch has asterisk, i.e. created branch via symbolic-ref
       "git:" << git_current_branch[2..git_current_branch.length] # remove asterisk and return branch name
     end
   end

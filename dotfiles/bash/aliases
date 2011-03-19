@@ -14,10 +14,10 @@ alias migrate='rake db:migrate && rake db:migrate RAILS_ENV=test'
 alias hgc='hg commit -m '
 
 # git
-alias gitk='gitk --all'
-alias gits='git status'
-alias gita='git add -A'
-alias gitd='git diff'
+alias gk='gitk --all'
+alias gs='git status'
+alias ga='git add -A'
+alias gd='git diff'
 
 alias prolog='swipl'
 
@@ -29,7 +29,7 @@ function work() {
 alias kk='ssh kk'
 alias kain='ssh kain'
 
-function gitc() {
+function gc() {
   # git add -A
   git commit -m "$*" # all arguments are applied here, $1 would apply first argument etc.
 }

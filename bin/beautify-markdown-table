@@ -1,0 +1,61 @@
+#!/usr/bin/env ruby
+
+class Table
+  attr_accessor :lines
+  attr_reader :pipes_count
+  
+  def initialize(pipes_count)
+    @lines = []
+    @pipes_count = pipes_count
+  end
+  
+  def process
+    row_length = []
+    @lines.each do |line|
+      line.split("|").each_with_index do |match, i|
+        length = match.length
+        match.scan(/\303\244|\303\266|\303\274/) { |m| length -= 1 }
+        row_length[i] = length if length > (row_length[i] || 0)
+      end
+    end
+    
+    @lines.map do |line|
+      new_line = []
+      line.split("|").each_with_index do |match, i|
+        extra_length = 0
+        match.scan(/\303\244|\303\266|\303\274/) { |m| extra_length += 1 }
+        new_line << match.ljust(row_length[i] + extra_length, " ")
+      end
+      new_line.join("|")
+    end
+  end
+end
+
+filename = ARGV.shift
+lines = File.read(filename).split("\n")
+table = nil
+output = []
+
+lines.each do |line|
+  unless table.nil?
+    if line.scan(/(?:.*?(\|))/).count == table.pipes_count
+      table.lines << line
+    else
+      output += table.process
+      table = nil
+      output << line
+    end
+    
+    next
+  end
+  
+  if line =~ /-+\|-+?/
+    pipes_count = line.scan(/-+(\|)-+?/).count
+    table = Table.new(pipes_count)
+    table.lines << line
+    table.lines.unshift output.pop unless output.last.nil?
+  else
+    output << line
+  end
+end
+print output.join("\n")

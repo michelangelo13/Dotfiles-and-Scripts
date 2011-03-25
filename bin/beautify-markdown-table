@@ -58,4 +58,4 @@ lines.each do |line|
     output << line
   end
 end
-print output.join("\n")
+puts output.join("\n")

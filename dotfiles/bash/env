@@ -15,4 +15,4 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=$PATH:~/bin
 export PATH=$PATH:/Library/PostgreSQL/9.0/bin
 
-CDPATH=.:~:~/work:~/Downloads:~/Desktop/Dropbox/Own\ Data/8.\ Semester:~/Desktop/Dropbox/Own\ Data/8.\ Semester/SoPra
+CDPATH=.:~:~/work:~/Downloads:~/Desktop/Dropbox/Own\ Data/8.\ Semester:~/Desktop/Dropbox/Own\ Data/8.\ Semester/SoPra:~/Documents/workspace

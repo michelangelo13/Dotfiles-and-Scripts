@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+# This file will probably not useful for someone else,
+# since it contains fixed dates and start prices of my investments.
+# The rate of return (per year) is calculated, when the current price is given.
+
+require 'rubygems'
+require 'micro-optparse'
+require 'date'
+
+module Finance
+  def self.yield_rate_of_return(prices = {})
+    start_data = {
+      :bond => [83.96, DateTime.strptime("07.04.09", "%d.%m.%y")],
+      :share_one => [42.83, DateTime.strptime("10.03.05", "%d.%m.%y")],
+      :share_two => [65.06, DateTime.strptime("30.10.07", "%d.%m.%y")]
+    }
+    
+    prices.each_pair do |key, value|
+      time_difference = (DateTime.now - start_data[key][1]).to_i / 365.0
+      start_value = start_data[key][0]
+      rate_of_return = (value - start_value) / start_value / time_difference * 100
+      puts "#{key}: #{rate_of_return} (#{start_data[key][1].strftime("%d.%m.%y")}, #{start_data[key][0]})"
+    end
+  end
+end
+
+options = Parser.new do |p|
+  p.option :bond, "Bond", :default => 0.0
+  p.option :share_one, "Share One", :default => 0.0
+  p.option :share_two, "Share Two", :default => 0.0
+end.process!
+
+Finance::yield_rate_of_return(options)

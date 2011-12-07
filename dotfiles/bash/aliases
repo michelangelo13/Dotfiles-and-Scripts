@@ -9,7 +9,8 @@ alias list='ls -AGFohS'
 # ruby
 alias c='script/rails console'
 alias s='script/rails server'
-alias migrate='rake db:migrate && rake db:migrate RAILS_ENV=test'
+alias migrate='rake db:migrate RAILS_ENV=production && rake db:migrate RAILS_ENV=development && rake db:migrate RAILS_ENV=test'
+alias rollback='rake db:rollback RAILS_ENV=production && rake db:rollback RAILS_ENV=development && rake db:rollback RAILS_ENV=test'
 
 alias hgc='hg commit -m '
 
@@ -41,7 +42,7 @@ function simson-paste() {
 }
 
 function simson-copy() {
-  ssh kain "scp simson10:$2$1 $1"
+  ssh kain "scp simson08:$2$1 $1"
   scp kain:$1 $1
   ssh kain "rm $1"
 }

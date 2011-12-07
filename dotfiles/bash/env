@@ -14,5 +14,6 @@ export PATH=$PATH:$SCALA_HOME/bin
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=$PATH:~/bin
 export PATH=$PATH:/Library/PostgreSQL/9.0/bin
+export PATH=$PATH:/usr/texbin
 
-CDPATH=.:~:~/work:~/Downloads:~/Desktop/Dropbox/Own\ Data/8.\ Semester:~/Desktop/Dropbox/Own\ Data/8.\ Semester/SoPra:~/Documents/workspace
+CDPATH=.:~:~/work:~/Downloads:~/Desktop/Dropbox/Own\ Data/9.\ Semester:~/Documents/workspace

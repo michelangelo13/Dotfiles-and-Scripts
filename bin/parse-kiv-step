@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cat $1 | sed 's/.*<INFO>//' | sed 's/<\/INFO><SEQ>/:/' | sed 's/<\/SEQ>.*//' | grep -v '<?xml' | head -n 1

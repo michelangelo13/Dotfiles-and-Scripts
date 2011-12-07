@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+filename = ARGV.shift
+file = File.read(filename)
+file = file.gsub("\245", "|-").gsub("\250", "<=").gsub("\334", "!=").gsub("\255", "->").gsub("\263", "all").gsub("\270", "and")
+puts file

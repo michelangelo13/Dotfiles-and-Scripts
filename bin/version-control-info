@@ -11,7 +11,22 @@ require 'time'
 
 module VersionControlInfo
   def self.main # will be called at the end, imho improves readability
-    print git_info() << svn_info()
+    print git_info() << svn_info() << hg_info()
+  end
+  
+  def self.hg_info
+    status = `hg status 2>&1`
+    if status.include?("no repository found")
+      ""
+    else
+      time = `hg log | head`.split("\n").grep(/^date:.*$/).first.sub("date:", "").strip
+      elapsed_time, suffix = seconds_to_appropriate_magnitude(Time.now - Time.parse(time))
+      elapsed_time = elapsed_time.to_s + suffix
+
+      branch = `hg branch`.strip
+      suffix = status.empty? ? "" : ", " << elapsed_time
+      "[" << branch.to_s << suffix << "] "
+    end
   end
 
   def self.svn_info

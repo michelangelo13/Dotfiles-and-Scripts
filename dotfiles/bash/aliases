@@ -18,9 +18,12 @@ alias hgc='hg commit -m '
 
 # git
 alias gk='gitk --all'
+alias gx='open /Applications/GitX.app .'
+alias gg='git log --graph --format="%C(white)%h:%Creset %s (%C(cyan)%an, %ar%Creset)"'
 alias gs='git status'
 alias ga='git add -A'
 alias gd='git diff'
+alias hb='hub browse' # github
 
 alias prolog='swipl'
 

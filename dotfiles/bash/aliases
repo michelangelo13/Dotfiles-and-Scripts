@@ -6,6 +6,8 @@ alias nconfig="$EDITOR ~/config/dotfiles/bash/config && reload"
 alias ls='ls -AGF'
 alias list='ls -AGFohS'
 
+alias openx='open *.xcodeproj'
+
 # ruby
 alias c='script/rails console'
 alias s='script/rails server'

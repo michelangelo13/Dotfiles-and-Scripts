@@ -1,0 +1,27 @@
+[auth]
+assembla.prefix=hg.assembla.com/w5
+assembla.username=Florian Pilz
+assembla.schemes=http
+
+[ui]
+username=Florian Pilz <fpilz87@googlemail.com>
+editor=mate -w
+
+[paths]
+default=ssh://hg@bitbucket.org/florianpilz/iscanumanager
+
+[alias]
+dotfiles=pull http://hg.dazmogan.com/hg/dotfiles
+pulliscanu=pull https://florianpilz@bitbucket.org/florianpilz/iscanu
+pushiscanu=push https://florianpilz@bitbucket.org/florianpilz/iscanu
+
+[extensions]
+hgk=
+hgext.extdiff=
+
+[extdiff]
+cmd.kdiff3=
+
+[merge-tools]
+kdiff3.args=$base $local $other -o $output
+

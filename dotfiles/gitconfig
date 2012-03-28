@@ -1,0 +1,14 @@
+[user]
+	email = fpilz87@googlemail.com
+	name = Florian Pilz
+[alias]
+	co = checkout
+[core]
+	editor = mate -w
+	quotepath = false
+[merge]
+	tool = kdiff3
+[color]
+	diff = auto
+	status = auto
+	branch = auto

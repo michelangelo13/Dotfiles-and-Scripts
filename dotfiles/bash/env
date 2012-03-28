@@ -6,7 +6,7 @@ export AUTOFEATURE=true
 export PGDATA=/Library/PostgreSQL/9.0/data/
 # export R_HOME=/Library/Frameworks/R.framework/Resources
 
-export PATH=/Applications/Emacs.app/Contents/MacOS:$PATH
+# export PATH=/Applications/Emacs.app/Contents/MacOS:$PATH
 # export PATH=/Applications/MAMP/Library/bin:$PATH
 export PATH=/usr/local/mysql/bin:$PATH
 export PATH=$PATH:$HOME/.cabal/bin
@@ -16,4 +16,4 @@ export PATH=$PATH:~/bin
 export PATH=$PATH:/Library/PostgreSQL/9.0/bin
 export PATH=$PATH:/usr/texbin
 
-CDPATH=.:~:~/work:~/Downloads:~/Desktop/Dropbox/Own\ Data/9.\ Semester:~/Documents/workspace
+CDPATH=.:~:~/work:~/Downloads:~/Desktop/Dropbox/Own\ Data/:~/Documents/workspace

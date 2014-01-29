@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ "$1" = "-v" ] ; then
+    VERBOSE=1
+    shift
+else
+    VERBOSE=0
+fi
+
+for i in * ;
+  do cd $i;
+    if [ $VERBOSE = 1 ] ; then
+        echo Verzeichnis: $i
+     fi
+     hg "$@";
+     cd ..;
+  done
+  

@@ -25,6 +25,8 @@ alias migrate='rake db:migrate RAILS_ENV=production && rake db:migrate RAILS_ENV
 alias rollback='rake db:rollback RAILS_ENV=production && rake db:rollback RAILS_ENV=development && rake db:rollback RAILS_ENV=test'
 
 
+alias ag='ag --follow'
+
 # git
 alias gk='gitk --all'
 alias gx='open /Applications/GitX.app .'

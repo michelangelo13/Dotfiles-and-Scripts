@@ -24,6 +24,7 @@ alias selenium-interactive='java -jar ~/executables/selenium-server-standalone-2
 alias migrate='rake db:migrate RAILS_ENV=production && rake db:migrate RAILS_ENV=development && rake db:migrate RAILS_ENV=test'
 alias rollback='rake db:rollback RAILS_ENV=production && rake db:rollback RAILS_ENV=development && rake db:rollback RAILS_ENV=test'
 
+alias hgg='hg log --graph --template "$WHITE{node|short}:$NO_COLOR {desc|firstline} ($CYAN{author|person}, {date|age}$NO_COLOR)\n"'
 
 alias ag='ag --follow'
 

@@ -16,16 +16,17 @@ module VersionControlInfo
   
   def self.hg_info
     status = `hg status 2>&1`
-    if status.include?("no repository found")
-      ""
+    if status.include?("no repository found") || status.include?("Kein Projektarchiv")
+      return ""
     else
-      time = `hg log | head`.split("\n").grep(/^date:.*$/).first.sub("date:", "").strip
+      branch = `hg branch`.strip
+      date = `hg log | head`.split("\n").grep(/^(date|Datum):.*$/)
+      return "[hg:#{branch}]" if date.empty?
+      time = date.first.sub("date:", "").strip
       elapsed_time, suffix = seconds_to_appropriate_magnitude(Time.now - Time.parse(time))
       elapsed_time = elapsed_time.to_s + suffix
-
-      branch = `hg branch`.strip
-      suffix = status.empty? ? "" : ", " << elapsed_time
-      "[" << branch.to_s << suffix << "] "
+      suffix = status.empty? ? "" : ", #{elapsed_time}"
+      return "[hg:#{branch}#{suffix}] "
     end
   end
 

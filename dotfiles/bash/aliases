@@ -84,3 +84,7 @@ function svn-authors() {
     echo "${author} = NAME <USER@DOMAIN>";
   done
 }
+
+function svndiff() {
+  svn diff "${@}" | colordiff 
+}

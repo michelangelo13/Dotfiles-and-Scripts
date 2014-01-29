@@ -3,14 +3,24 @@ alias nalias="$EDITOR ~/config/dotfiles/bash/aliases && reload"
 alias nenv="$EDITOR ~/config/dotfiles/bash/env && reload"
 alias nconfig="$EDITOR ~/config/dotfiles/bash/config && reload"
 
+alias s="subl"
+alias gu="gtl-upload"
+
+alias t="bin/test -c --all"
+alias b="bin/buildout"
+
 alias ls='ls -AGF'
 alias list='ls -AGFohS'
 
 alias openx='open *.xcodeproj'
 
+alias selenium='java -jar ~/executables/selenium-server-standalone-2.35.0.jar -firefoxProfileTemplate /Users/florianpilz/Library/Application\ Support/Firefox/Profiles/w9pr1rzt.selenium'
+
+alias selenium-interactive='java -jar ~/executables/selenium-server-standalone-2.35.0.jar -firefoxProfileTemplate /Users/florianpilz/Library/Application\ Support/Firefox/Profiles/ltt7657u.selenium'
+
 # ruby
-alias c='script/rails console'
-alias s='script/rails server'
+# alias c='script/rails console'
+# alias s='script/rails server'
 alias migrate='rake db:migrate RAILS_ENV=production && rake db:migrate RAILS_ENV=development && rake db:migrate RAILS_ENV=test'
 alias rollback='rake db:rollback RAILS_ENV=production && rake db:rollback RAILS_ENV=development && rake db:rollback RAILS_ENV=test'
 

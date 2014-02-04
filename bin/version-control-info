@@ -32,6 +32,7 @@ module VersionControlInfo
 
   def self.svn_info
     return "" if `svn info 2>&1`.include?("nicht gefunden")
+    return "" if `svn info 2>&1`.include?("not found")
     # with ?! the following word shall not appear in the match
     status = `svn status --ignore-externals 2>&1`.split("\n").grep(/^(?!X)/).join("\n")
     if status.include?("not a working copy") or status.include?("keine Arbeitskopie") or status.include?("not found") or status.include?("nicht gefunden")

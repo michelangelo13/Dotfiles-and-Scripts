@@ -36,13 +36,16 @@ module VersionControlInfo
     # with ?! the following word shall not appear in the match
     status = `svn status --ignore-externals 2>&1`.split("\n").grep(/^(?!X)/).join("\n")
     if status.include?("not a working copy") or status.include?("keine Arbeitskopie") or status.include?("not found") or status.include?("nicht gefunden")
-      ""
-    elsif status.empty?
-      "[svn]"
+      return ""
+    end
+    
+    branch = `svn info | grep URL: | cut -d " " -f 2`.split('/').last.strip
+    if status.empty?
+      "[svn:#{branch}]"
     else
       time = Time.parse(`svn info`.split("\n").last.sub("Last Changed Date: ", ""))
       elapsed_time, suffix = seconds_to_appropriate_magnitude(Time.now - time)
-      "[svn, " << elapsed_time.to_s << suffix << "] "
+      "[svn:#{branch}, " << elapsed_time.to_s << suffix << "] "
     end
   end
 

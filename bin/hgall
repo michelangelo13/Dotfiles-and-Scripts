@@ -1,17 +1,8 @@
 #!/bin/bash
-if [ "$1" = "-v" ] ; then
-    VERBOSE=1
-    shift
-else
-    VERBOSE=0
-fi
-
-for i in * ;
-  do cd $i;
-    if [ $VERBOSE = 1 ] ; then
-        echo Verzeichnis: $i
-     fi
-     hg "$@";
-     cd ..;
-  done
-  
+for i in * ; do
+    if [ ! -d $i/.hg ]; then
+        continue
+    fi
+    echo Verzeichnis: $i;
+    hg --cwd $i "$@" 2>/dev/null;
+done

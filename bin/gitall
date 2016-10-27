@@ -1,0 +1,10 @@
+#!/bin/bash
+for i in * ; do
+    if [ ! -d $i/.git ]; then
+        continue
+    fi
+    echo Verzeichnis: $i;
+    cd $i > /dev/null
+    git "$@"
+    cd ..
+done

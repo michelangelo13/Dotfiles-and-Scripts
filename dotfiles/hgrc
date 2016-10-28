@@ -5,23 +5,46 @@ assembla.schemes=http
 
 [ui]
 username=Florian Pilz <fpilz87@googlemail.com>
-editor=mate -w
+ignore = ~/.hgignore
 
 [paths]
 default=ssh://hg@bitbucket.org/florianpilz/iscanumanager
 
 [alias]
-dotfiles=pull http://hg.dazmogan.com/hg/dotfiles
-pulliscanu=pull https://florianpilz@bitbucket.org/florianpilz/iscanu
-pushiscanu=push https://florianpilz@bitbucket.org/florianpilz/iscanu
+fetch = pull --rebase -v
+pull = pull --rebase -v
+revert = revert --no-backup
+blame = blame --user --number --ignore-all-space --ignore-blank-lines
+show = diff -c
+stash = shelve
+deleted = log -r "removes('**')" --template "{rev}: {file_dels}\n"
 
 [extensions]
-hgk=
-hgext.extdiff=
+hgext.color=
+hgext.record=
+hgext.graphlog=
+hgext.highlight=
+hgext.purge=
+mercurial_keyring=
+crecord = ~/.hgextensions/crecord/crecord
+hgchangelog = ~/.hgextensions/hgchangelog/hgchangelog.py
+rebase=
+rebaseif = ~/.hgextensions/ml-hgext/rebaseif.py
+shelve=
+pager=
+strip=
 
-[extdiff]
-cmd.kdiff3=
+[changelog]
+filename = CHANGES.txt
+
+[pager]
+pager = LESS='FSXR' less
+attend = log, glog, diff, show
 
 [merge-tools]
-kdiff3.args=$base $local $other -o $output
-
+p4.priority = 60
+p4.premerge = True
+p4.executable = /Applications/p4merge.app/Contents/MacOS/p4merge
+p4.gui = True
+p4.args = $base $local $other $output
+p4.binary = False

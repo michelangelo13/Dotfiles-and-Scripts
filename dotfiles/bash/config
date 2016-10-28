@@ -3,4 +3,11 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then source "$HOME/.rvm/scripts/rvm" ; fi
 # Finished adapting your PATH environment variable for use with MacPorts.
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
+# only append to history file
+shopt -s histappend
+# history -a: write last command to history file, only visible in new terminals
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+# ignore duplicates in shell history
+export HISTCONTROL=ignoredups
+
 PS1="\[$CYAN\]\w@\h \$(version-control-info)\n➜\[$NO_COLOR\] "

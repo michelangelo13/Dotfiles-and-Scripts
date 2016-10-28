@@ -1,0 +1,12 @@
+syntax: glob
+
+.DS_Store
+.ruby-version
+*.sublime-workspace
+*.sublime-project
+phantomjsdriver.log
+
+.Python
+.python-version
+include/python2.7
+lib/python2.7

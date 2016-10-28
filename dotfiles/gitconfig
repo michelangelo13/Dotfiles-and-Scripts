@@ -1,14 +1,26 @@
 [user]
-	email = fpilz87@googlemail.com
-	name = Florian Pilz
-[alias]
-	co = checkout
+    name = Florian Pilz
+    email = fpilz87@googlemail.com
 [core]
-	editor = mate -w
-	quotepath = false
-[merge]
-	tool = kdiff3
+    excludesfile = /Users/florianpilz/.gitignore_global
+[difftool "sourcetree"]
+    cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
+    path =
+[mergetool "sourcetree"]
+    cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+    trustExitCode = true
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+    ui = true
+[merge]
+    tool = p4merge
+[push]
+    default = simple
+[alias]
+    co = checkout
+    st = status -s
+[init]
+    templatedir = ~/.git-templates
+[pull]
+    rebase = true
+[changelog]
+    filename = CHANGES.txt

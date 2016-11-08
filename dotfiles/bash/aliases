@@ -1,3 +1,5 @@
+alias stree='/Applications/SourceTree.app/Contents/Resources/stree'
+
 alias reload='source ~/.profile 2> /dev/null ; source ~/.bashrc 2> /dev/null'
 alias nalias="$EDITOR ~/config/dotfiles/bash/aliases && reload"
 alias nenv="$EDITOR ~/config/dotfiles/bash/env && reload"

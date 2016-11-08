@@ -1,3 +1,7 @@
+alias be='bundle exec'
+alias server='bundle exec rails s'
+alias jobs='bundle exec rake jobs:work'
+
 alias stree='/Applications/SourceTree.app/Contents/Resources/stree'
 
 alias reload='source ~/.profile 2> /dev/null ; source ~/.bashrc 2> /dev/null'

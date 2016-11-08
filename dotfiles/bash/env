@@ -12,6 +12,7 @@ export CDPATH=.:~:~/work:~/Downloads:~/Desktop/Dropbox/Own\ Data/:~/Documents/wo
 
 export FIGNORE=egg-info
 
+export HOMEBREW_GITHUB_API_TOKEN="fafee29b34e58a766acdeac2eccd8cc862678491"
 # export EDITOR="mate -w"
 export EDITOR="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl --wait"
 export SCALA_HOME=/Users/florian/Scala
